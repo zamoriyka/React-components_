@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {AppButtons} from './components/button'
 import {AppList} from './components/list'
-import {AppForm} from './components/form'
+//import {AppForm} from './components/form'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 
@@ -24,7 +24,7 @@ export default class App extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    handleChange = (event, index, value) => this.setState({value: event.target.value});
+    handleChange = () => this.setState({itemsList: true});
 
     render() {
         const actions = [
@@ -53,13 +53,16 @@ export default class App extends Component {
             <AppList
             items = {this.state.itemsList}
             />
-            <AppForm />
+
         </Dialog>
 
       </div>
     );
   }
 }
+
+
+
 
 
 
