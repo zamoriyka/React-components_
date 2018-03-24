@@ -3,41 +3,39 @@ import React from 'react'
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
+
+
+
 const styles = {
     customWidth: {
         width: 200,
     },
 };
 
+
 export const AppList = (props) => {
     return (
-<div>
-    {/*  <List>
-        {props.items.map((item, key) => {
-            return (
-                <ListItem
-                    primaryText = {item.name}  />
-            )})}
-    </List>
-*/}
-    <DropDownMenu
-       style={styles.customWidth}
-       onChange={this.handleChange}
-       //value={this.props.name}
-    >
-        {props.items.map((item, key) => {
-            return (
-                <MenuItem
-                          primaryText = {item.name}
-                          openImmediately={true}
-                          autoWidth={false}/>
-            )
-        })
-        }
-    </DropDownMenu>
-    <br />
-</div>
+        <div>
+            <DropDownMenu
+                style={styles.customWidth}
+                //value={props.items}
+                //onChange={props.handleChange}
 
-)
+            >
+                  {props.items.map((item, key) => {
+                   return (
+                       <MenuItem
+                           primaryText = {item.name}
+                           //openImmediately={true}
+                            autoWidth={false}/>
+                    )
+                })
+                }
+
+            </DropDownMenu>
+            <br />
+        </div>
+    )
 }
+
 
