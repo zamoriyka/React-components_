@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import './App.css';
 import {AppButtons} from './components/button'
 import {AppList} from './components/list'
+import {ElementsList} from './components/elements-list'
 //import {AppForm} from './components/form'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/FlatButton'
 
 
+
+const styles = {
+    addButton: {
+        verticalAlign: 'middle',
+        marginRight: 450,
+    },
+};
 
 export default class App extends Component {
     constructor (props) {
@@ -17,25 +26,39 @@ export default class App extends Component {
                 {name: 'Twin'},
                 {name: 'Tripple'},
                 {name: 'Quadro'}
-            ],
-
+           ],
+            elementsList: [],
+            //value: 'Twin'
         }
 
         this.handleChange = this.handleChange.bind(this)
     }
 
-    handleChange = () => this.setState({itemsList: true});
+   //handleChange = (e) => this.setState({value});
+    handleChange(e) {
+        var change = {}
+        change[e.target.itemsList] = e.target.name
+        this.setState({change})
+        console.log('hi');
+    };
+
 
     render() {
         const actions = [
             <FlatButton
-                label="Save"
+                label="Create"
                 primary={true}
+                style={styles.addButton}
                 onClick={() => this.setState({isModalOpen: false})}
             />,
-            <FlatButton
+            <RaisedButton
+                label="Save"
+                primary={false}
+                onClick={() => this.setState({isModalOpen: false})}
+            />,
+            <RaisedButton
                 label="Cancel"
-                primary={true}
+                primary={false}
                 onClick={() => this.setState({isModalOpen: false})}
             />,
         ];
@@ -51,11 +74,16 @@ export default class App extends Component {
             onRequestClose={() => this.setState({isModalOpen: true})}
         >
             <AppList
-            items = {this.state.itemsList}
+                items = {this.state.itemsList}
+                handleChange={this.handleChange}
+                value={this.state.itemsList}
+                onChange={this.handleChange}
+            />
+            <ElementsList
+            itemList = {this.state.elementsList}
             />
 
         </Dialog>
-
       </div>
     );
   }
